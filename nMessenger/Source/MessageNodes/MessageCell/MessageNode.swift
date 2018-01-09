@@ -267,7 +267,7 @@ open class MessageNode: GeneralMessengerCell {
      - parameter recognizer: Must be an UITapGestureRecognizer.
      Can be be overritten when subclassed
      */
-    open func messageNodeLongPressSelector(_ recognizer: UITapGestureRecognizer) {
+    @objc open func messageNodeLongPressSelector(_ recognizer: UITapGestureRecognizer) {
         contentNode?.messageNodeLongPressSelector(recognizer)
     }
 }
@@ -277,7 +277,7 @@ extension MessageNode {
     /**
      Notifies the delegate that the avatar was clicked
      */
-    public func avatarClicked()
+    @objc public func avatarClicked()
     {
         self.delegate?.avatarClicked?(self)
     }

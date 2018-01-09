@@ -47,7 +47,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
     //SelectionType type of selection the user is making  - defualt is camera
     open var selection = SelectionType.camera
     //AVAuthorizationStatus authorization status for the camera
-    open var cameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+    open var cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
     //PHAuthorizationStatus authorization status for the library
     open var photoLibAuthStatus = PHPhotoLibrary.authorizationStatus()
     //MARK: Private Parameters
@@ -112,7 +112,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
             
         } else
             {
-                self.cameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+                self.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
                 if(photoLibAuthStatus != PHAuthorizationStatus.authorized) {
                     self.requestPhotoLibraryPermissions({ (granted) in
                         if(granted) {
@@ -301,7 +301,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
     /**
      Changes between camera view and gallery view
      */
-    open func changePictureMode() {
+    @objc open func changePictureMode() {
         
         switch selection {
         case .camera:
@@ -345,19 +345,19 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
     /**
      Closes the view
      */
-    open func exitButtonPressed() {
+    @objc open func exitButtonPressed() {
         cameraDelegate?.cameraCancelSelection()
     }
     /**
      Takes a photo
      */
-    open func capture(_ sender: UIButton) {
+    @objc open func capture(_ sender: UIButton) {
         self.takePicture()
     }
     /**
      Enables/disables flash
      */
-    open func toggleFlash(_ sender: UIButton) {
+    @objc open func toggleFlash(_ sender: UIButton) {
         if (sender.isSelected == false) {
             sender.tintColor = UIColor.n1ActionBlueColor()
             sender.isSelected = true
@@ -380,7 +380,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
     /**
      Changes the camera from front to back
      */
-    open func flipCamera(_ sender: UIButton) {
+    @objc open func flipCamera(_ sender: UIButton) {
         if (sender.isSelected == false) {
             sender.tintColor = UIColor.n1ActionBlueColor()
             sender.isSelected = true
@@ -416,7 +416,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
      - parameter completion: Must be (granted : Bool) -> Void
      */
     open func requestAccessForCamera(_ completion:@escaping (_ granted : Bool) -> Void) {
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { (granted) in
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
             completion(granted)
         }
     }

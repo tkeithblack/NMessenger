@@ -6,7 +6,7 @@ target 'nMessenger' do
   use_frameworks!
 
   # Pods for nMessenger
-  pod 'Texture'
+  pod 'Texture', '2.5.1'
 
   target 'nMessengerTests' do
     inherit! :search_paths

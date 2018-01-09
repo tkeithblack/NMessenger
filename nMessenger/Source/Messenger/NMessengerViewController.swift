@@ -192,7 +192,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
     /**
      Moves InputBarView up and down accoridng to the location of the keyboard
      */
-    func keyboardNotification(_ notification: Notification) {
+    @objc func keyboardNotification(_ notification: Notification) {
         if let userInfo = (notification as NSNotification).userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
@@ -232,7 +232,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
     /**
      Closes the messenger on swipe on InputBarView
      */
-    func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
+    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         self.inputBarView.textInputView.resignFirstResponder()
     }
     

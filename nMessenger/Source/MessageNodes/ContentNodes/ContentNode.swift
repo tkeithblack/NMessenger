@@ -34,7 +34,7 @@ open class ContentNode: ASDisplayNode {
      */
     open var isIncomingMessage = true {
         didSet {
-             self.backgroundBubble?.bubbleColor = isIncomingMessage ? bubbleConfiguration.getIncomingColor() : bubbleConfiguration.getOutgoingColor()
+            self.backgroundBubble?.bubbleColor = isIncomingMessage ? bubbleConfiguration.getIncomingColor() : bubbleConfiguration.getOutgoingColor()
             
             self.setNeedsLayout()
         }
@@ -93,25 +93,38 @@ open class ContentNode: ASDisplayNode {
             }
         }
     }
-
     
-    //MARK: Override AsycDisaplyKit Methods
+    
+    //MARK:  Override Texture (AsyncDisplayKit) Methods
+    
+    // Return the self object as the optional parameter.
+    open override func drawParameters(forAsyncLayer layer: _ASDisplayLayer) -> NSObjectProtocol? {
+        return self
+    }
     
     /**
-     Draws the content in the bubble. This is called on a background thread.
+     Draw the content in the bubble. This is called on a background thread.
      */
-    open func drawRect(_ bounds: CGRect, withParameters parameters: NSObjectProtocol!,
-                  isCancelled isCancelledBlock: asdisplaynode_iscancelled_block_t, isRasterizing: Bool) {
-        self.isOpaque = false
+    
+    open override class func draw(_ bounds: CGRect, withParameters parameters: Any?,
+                                  isCancelled isCancelledBlock: asdisplaynode_iscancelled_block_t, isRasterizing: Bool) {
+        guard let instance = parameters as? ContentNode else {
+            return
+        }
+        instance.isOpaque = false
         if !isRasterizing {
-            self.calculateLayerPropertiesThatFit(bounds)
+            instance.calculateLayerPropertiesThatFit(bounds)
             
             //call the main queue
             DispatchQueue.main.async {
-                self.layoutLayers()
+                guard let bubble = instance.backgroundBubble else {
+                    return
+                }
+                self.layoutLayers(with: bubble, isIncomingMessage: instance.isIncomingMessage)
             }
         }
     }
+    
     
     
     //MARK: Override AsycDisaplyKit helper methods
@@ -122,25 +135,23 @@ open class ContentNode: ASDisplayNode {
      */
     open func calculateLayerPropertiesThatFit(_ bounds: CGRect) {
         if let backgroundBubble = self.backgroundBubble {
-             backgroundBubble.sizeToBounds(bounds)
+            backgroundBubble.sizeToBounds(bounds)
         }
     }
     
     /**
      Called on the main thread
      */
-    open func layoutLayers() {
-        if let backgroundBubble = self.backgroundBubble {
-            backgroundBubble.createLayer()
-            
-            //TODO: this is slightly hacky, will need to rethink
-            if isIncomingMessage {
-                CATransaction.begin()
-                CATransaction.setDisableActions(true)
-                backgroundBubble.layer.transform = CATransform3DTranslate(CATransform3DMakeScale(-1, 1, 1), -backgroundBubble.calculatedBounds.width, 0, 0)
-                backgroundBubble.maskLayer.transform = CATransform3DTranslate(CATransform3DMakeScale(-1, 1, 1), -backgroundBubble.calculatedBounds.width, 0, 0)
-                CATransaction.commit()
-            }
+    open class func layoutLayers(with backgroundBubble: Bubble, isIncomingMessage: Bool) {
+        backgroundBubble.createLayer()
+        
+        //TODO: this is slightly hacky, will need to rethink
+        if isIncomingMessage {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            backgroundBubble.layer.transform = CATransform3DTranslate(CATransform3DMakeScale(-1, 1, 1), -backgroundBubble.calculatedBounds.width, 0, 0)
+            backgroundBubble.maskLayer.transform = CATransform3DTranslate(CATransform3DMakeScale(-1, 1, 1), -backgroundBubble.calculatedBounds.width, 0, 0)
+            CATransaction.commit()
         }
     }
     
@@ -155,7 +166,7 @@ open class ContentNode: ASDisplayNode {
             execute: closure
         )
     }
-
+    
     
     //MARK: UITapGestureRecognizer Selector
     
@@ -165,5 +176,5 @@ open class ContentNode: ASDisplayNode {
      */
     open func messageNodeLongPressSelector(_ recognizer: UITapGestureRecognizer) {
     }
-
+    
 }

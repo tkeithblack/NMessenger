@@ -118,7 +118,7 @@ open class ImageContentNode: ContentNode {
      Copy Selector for UIMenuController
      Puts the node's image on UIPasteboard
      */
-    open func copySelector() {
+    @objc open func copySelector() {
         if let image = self.image {
             UIPasteboard.general.image = image
         }

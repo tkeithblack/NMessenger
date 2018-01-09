@@ -115,7 +115,7 @@ open class NMessenger: UIView {
         messengerNode.view.separatorStyle = UITableViewCellSeparatorStyle.none
         messengerNode.view.allowsSelection = false
         messengerNode.view.showsVerticalScrollIndicator = false
-        messengerNode.view.automaticallyAdjustsContentOffset = true
+        messengerNode.automaticallyAdjustsContentOffset = true
     }
     
     //MARK: Public functions
@@ -514,7 +514,7 @@ open class NMessenger: UIView {
      */
     fileprivate func shouldHandleBatchFetch(_ offset: CGPoint) {
         if doesBatchFetch && self.messengerDelegate.batchFetchContent != nil {
-            if shouldBatchFetch(self.state.batchFetchLock, direction: self.state.scrollDirection, bounds: messengerNode.view.bounds, contentSize: messengerNode.view.contentSize, targetOffset: offset, leadingScreens: messengerNode.view.leadingScreensForBatching) {
+            if shouldBatchFetch(self.state.batchFetchLock, direction: self.state.scrollDirection, bounds: messengerNode.view.bounds, contentSize: messengerNode.view.contentSize, targetOffset: offset, leadingScreens: messengerNode.leadingScreensForBatching) {
                 
                 //lock and fetch
                 self.state.batchFetchLock.beginBatchFetching()

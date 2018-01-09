@@ -157,7 +157,7 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
             
             textWidth -= 2.0 * textView.textContainer.lineFragmentPadding
             
-            let boundingRect: CGRect = newText.boundingRect(with: CGSize(width: textWidth, height: 0), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSFontAttributeName: textView.font!], context: nil)
+            let boundingRect: CGRect = newText.boundingRect(with: CGSize(width: textWidth, height: 0), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSAttributedStringKey.font: textView.font!], context: nil)
             
             let numberOfLines = boundingRect.height / textView.font!.lineHeight;
             
@@ -218,14 +218,14 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
         if(authStatus != AVAuthorizationStatus.authorized) {
             cameraVC.isCameraPermissionGranted({(granted) in
                 if(granted) {
-                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
                     DispatchQueue.main.async(execute: { () -> Void in
                         self.controller.present(self.cameraVC, animated: true, completion: nil)
                     })
                 }
                 else
                 {
-                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
                     if(photoLibAuthStatus != PHAuthorizationStatus.authorized) {
                         self.cameraVC.requestPhotoLibraryPermissions({ (granted) in
                             if(granted) {
@@ -254,7 +254,7 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
                 }
             })
         } else {//also check if photo gallery permissions are granted
-            self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+            self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
             DispatchQueue.main.async(execute: { () -> Void in
                 self.controller.present(self.cameraVC, animated: true, completion: nil)
             })

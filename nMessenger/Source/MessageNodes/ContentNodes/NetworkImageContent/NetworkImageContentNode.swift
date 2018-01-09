@@ -123,7 +123,7 @@ open class NetworkImageContentNode: ContentNode,ASNetworkImageNodeDelegate {
      Copy Selector for UIMenuController
      Puts the node's image on UIPasteboard
      */
-    open func copySelector() {
+    @objc open func copySelector() {
         if let image = self.networkImageMessageNode.image {
             UIPasteboard.general.image = image
         }
