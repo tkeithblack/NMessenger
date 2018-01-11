@@ -47,6 +47,8 @@ open class MessageSentIndicator: GeneralMessengerCell {
             return text.attributedText?.string
         }
     }
+
+    open var textAlignment: ASStackLayoutJustifyContent = .center
     
     public override init() {
         super.init()
@@ -57,7 +59,7 @@ open class MessageSentIndicator: GeneralMessengerCell {
         let stackLayout = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: contentPadding,
-            justifyContent: .center,
+            justifyContent: textAlignment,
             alignItems: .center,
             children: [ text ])
         let paddingLayout = ASInsetLayoutSpec(insets: cellPadding, child: stackLayout)
