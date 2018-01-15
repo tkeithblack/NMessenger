@@ -20,6 +20,7 @@
 		19F4C1311D6CF4C00044E340 /* BubbleConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4C12F1D6CF4C00044E340 /* BubbleConfigurationTests.swift */; };
 		19F4C1321D6CF4C00044E340 /* MessageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4C1301D6CF4C00044E340 /* MessageNodeTests.swift */; };
 		23D188D1200C95580081F848 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D188D0200C95570081F848 /* UIDevice+Extension.swift */; };
+		23E9B647200C9634008A3A09 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D188D0200C95570081F848 /* UIDevice+Extension.swift */; };
 		37F1F229A5398DD920B9CA7A /* Pods_nMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118604259124D3DC9BCBA458 /* Pods_nMessenger.framework */; };
 		616280281D8196F700D1F510 /* nMessenger-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 616280271D8196F700D1F510 /* nMessenger-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		616280321D81978000D1F510 /* NMessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FC87391D63813700F3C21C /* NMessengerViewController.swift */; };
@@ -1795,6 +1796,7 @@
 				616280521D81A7C700D1F510 /* CustomContentCellNode.swift in Sources */,
 				616280511D81A7C700D1F510 /* CollectionViewContentNode.swift in Sources */,
 				616280601D81A92400D1F510 /* UIFont+N1Fonts.swift in Sources */,
+				23E9B647200C9634008A3A09 /* UIDevice+Extension.swift in Sources */,
 				6162804C1D81A71A00D1F510 /* DefaultBubble.swift in Sources */,
 				6162805A1D81A80500D1F510 /* MessageSentIndicator.swift in Sources */,
 				616280501D81A71F00D1F510 /* ContentNode.swift in Sources */,
