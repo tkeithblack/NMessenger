@@ -196,7 +196,13 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
     {
         if let userInfo = (notification as NSNotification).userInfo
         {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            if #available(iOS 11.0, *), UIDevice.isIphoneX {
+                var newFrame = endFrame
+                newFrame?.size.height = (endFrame?.size.height ?? CGFloat(0)) - self.additionalSafeAreaInsets.bottom
+                endFrame = newFrame
+            }
+
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
