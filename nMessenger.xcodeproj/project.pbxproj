@@ -19,7 +19,7 @@
 		19F4C12E1D6CF4550044E340 /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4C12C1D6CF4550044E340 /* UIFontTests.swift */; };
 		19F4C1311D6CF4C00044E340 /* BubbleConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4C12F1D6CF4C00044E340 /* BubbleConfigurationTests.swift */; };
 		19F4C1321D6CF4C00044E340 /* MessageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4C1301D6CF4C00044E340 /* MessageNodeTests.swift */; };
-		235B881E200C809C003ED5FA /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B881D200C809C003ED5FA /* UIDevice+Extension.swift */; };
+		23D188D1200C95580081F848 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D188D0200C95570081F848 /* UIDevice+Extension.swift */; };
 		37F1F229A5398DD920B9CA7A /* Pods_nMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118604259124D3DC9BCBA458 /* Pods_nMessenger.framework */; };
 		616280281D8196F700D1F510 /* nMessenger-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 616280271D8196F700D1F510 /* nMessenger-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		616280321D81978000D1F510 /* NMessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FC87391D63813700F3C21C /* NMessengerViewController.swift */; };
@@ -396,7 +396,7 @@
 		19F4C12C1D6CF4550044E340 /* UIFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
 		19F4C12F1D6CF4C00044E340 /* BubbleConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleConfigurationTests.swift; sourceTree = "<group>"; };
 		19F4C1301D6CF4C00044E340 /* MessageNodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNodeTests.swift; sourceTree = "<group>"; };
-		235B881D200C809C003ED5FA /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		23D188D0200C95570081F848 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		5015DB82C8FC66A862A52EA0 /* Pods-nMessengerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nMessengerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nMessengerTests/Pods-nMessengerTests.release.xcconfig"; sourceTree = "<group>"; };
 		616280251D8196F700D1F510 /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		616280271D8196F700D1F510 /* nMessenger-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nMessenger-iOS.h"; sourceTree = "<group>"; };
@@ -669,12 +669,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		235B881C200C8089003ED5FA /* Extensions */ = {
+		23D188CF200C95570081F848 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				235B881D200C809C003ED5FA /* UIDevice+Extension.swift */,
+				23D188D0200C95570081F848 /* UIDevice+Extension.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = Source/Extensions;
 			sourceTree = "<group>";
 		};
 		616280261D8196F700D1F510 /* nMessenger-iOS */ = {
@@ -740,7 +741,7 @@
 		F1418CE51D380B2400C404B5 /* nMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				235B881C200C8089003ED5FA /* Extensions */,
+				23D188CF200C95570081F848 /* Extensions */,
 				F1E73C3C1D760B3B00E61960 /* Images */,
 				F1FC873A1D63813700F3C21C /* Utilities */,
 				F1FC86911D63813700F3C21C /* Animated */,
@@ -1816,7 +1817,7 @@
 				F1FC87BD1D63813700F3C21C /* SimpleBubble.swift in Sources */,
 				F1FC87BE1D63813700F3C21C /* StackedBubble.swift in Sources */,
 				F1FC87D01D63813700F3C21C /* NMessenger.swift in Sources */,
-				235B881E200C809C003ED5FA /* UIDevice+Extension.swift in Sources */,
+				23D188D1200C95580081F848 /* UIDevice+Extension.swift in Sources */,
 				F1FC87C31D63813700F3C21C /* ImageContentNode.swift in Sources */,
 				F1FC87CB1D63813700F3C21C /* MessageGroup.swift in Sources */,
 				F1418CE91D380B2400C404B5 /* ViewController.swift in Sources */,
