@@ -11,13 +11,15 @@
 import UIKit
 import AVFoundation
 import Photos
+import YPImagePicker
+
 
 //MARK: InputBarView
 /**
  InputBarView class for NMessenger.
  Define the input bar for NMessenger. This is where the user would type text and open the camera or photo library.
  */
-open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelegate {
+open class NMessengerBarView: InputBarView, UITextViewDelegate {
     
     //MARK: IBOutlets
     //@IBOutlet for InputBarView
@@ -30,8 +32,6 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
     @IBOutlet open weak var textInputViewHeight: NSLayoutConstraint!
     
     //MARK: Public Parameters
-    //Reference to CameraViewController
-    open lazy var cameraVC: CameraViewController = CameraViewController()
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows:CGFloat = 3
     //String as placeholder text in input view
@@ -93,7 +93,6 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
         inputBarView.frame = self.bounds
         textInputView.delegate = self
         self.sendButton.isEnabled = false
-        cameraVC.cameraDelegate = self
 
     }
     
@@ -213,71 +212,21 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
      Open camera and/or photo library to take/select a photo
      */
     @IBAction open func plusClicked(_ sender: AnyObject?) {
-        let authStatus = cameraVC.cameraAuthStatus
-        let photoLibAuthStatus = cameraVC.photoLibAuthStatus
-        if(authStatus != AVAuthorizationStatus.authorized) {
-            cameraVC.isCameraPermissionGranted({(granted) in
-                if(granted) {
-                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.controller.present(self.cameraVC, animated: true, completion: nil)
-                    })
-                }
-                else
-                {
-                    self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-                    if(photoLibAuthStatus != PHAuthorizationStatus.authorized) {
-                        self.cameraVC.requestPhotoLibraryPermissions({ (granted) in
-                            if(granted) {
-                                self.cameraVC.photoLibAuthStatus = PHPhotoLibrary.authorizationStatus()
-                                DispatchQueue.main.async(execute: { () -> Void in
-                                    self.controller.present(self.cameraVC, animated: true, completion:
-                                        {
-                                            ModalAlertUtilities.postGoToSettingToEnableCameraModal(fromController: self.cameraVC)
-                                    })
-                                })
-                                
-                            }
-                            else
-                            {
-                                self.cameraVC.photoLibAuthStatus = PHPhotoLibrary.authorizationStatus()
-                                ModalAlertUtilities.postGoToSettingToEnableCameraAndLibraryModal(fromController: self.controller)
-                            }
-                        })
-                    }
-                    else
-                    {
-                        DispatchQueue.main.async(execute: { () -> Void in
-                            self.controller.present(self.cameraVC, animated: true, completion: nil)
-                        })
-                    }
-                }
-            })
-        } else {//also check if photo gallery permissions are granted
-            self.cameraVC.cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.controller.present(self.cameraVC, animated: true, completion: nil)
-            })
-        }
-    }
-    
-    
-    //MARK: CameraView delegate methods
-    /**
-     Implemetning CameraView delegate method
-     Close the CameraView and sends the image to the controller
-     */
-    open func pickedImage(_ image: UIImage!) {
-        self.cameraVC.dismiss(animated: true, completion: nil)
-        
-        _ = self.controller.sendImage(image,isIncomingMessage: false)
-    }
-    /**
-     Implemetning CameraView delegate method
-     Close the CameraView
-     */
-    open func cameraCancelSelection() {
-        cameraVC.dismiss(animated: true, completion: nil)
-    }
+        var config = YPImagePickerConfiguration()
+        config.onlySquareImagesFromCamera = true
+        config.showsVideo = false
+        config.usesFrontCamera = true
+        config.showsFilters = true
+        config.shouldSaveNewPicturesToAlbum = true
+        config.albumName = "Waplog"
+        config.startOnScreen = .library
 
+        let picker = YPImagePicker(configuration: config)
+        picker.didSelectImage = { [unowned picker] img in
+            _ = self.controller.sendImage(img, isIncomingMessage: false)
+            picker.dismiss(animated: true, completion: nil)
+        }
+        self.controller.present(picker, animated: true, completion: nil)
+
+    }
 }
