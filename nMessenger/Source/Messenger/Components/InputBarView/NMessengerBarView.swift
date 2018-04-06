@@ -34,6 +34,9 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate {
     //MARK: Public Parameters
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows:CGFloat = 3
+    // Use this to override the default Image Picker configuration
+    open var ypImagePickerConfig: YPImagePickerConfiguration?
+    
     //String as placeholder text in input view
     open var inputTextViewPlaceholder: String = "NMessenger"
     {
@@ -213,13 +216,18 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate {
      */
     @IBAction open func plusClicked(_ sender: AnyObject?) {
         var config = YPImagePickerConfiguration()
-        config.onlySquareImagesFromCamera = true
-        config.showsVideo = false
-        config.usesFrontCamera = true
-        config.showsFilters = true
-        config.shouldSaveNewPicturesToAlbum = true
-        config.albumName = "Waplog"
-        config.startOnScreen = .library
+        
+        if let ypConfig = ypImagePickerConfig {
+            config = ypConfig
+        } else {
+            config.onlySquareImagesFromCamera = true
+            config.showsVideoInLibrary = false
+            config.usesFrontCamera = true
+            config.showsFilters = true
+            config.shouldSaveNewPicturesToAlbum = true
+            config.albumName = "Waplog"
+            config.startOnScreen = .library
+        }
 
         let picker = YPImagePicker(configuration: config)
         picker.didSelectImage = { [unowned picker] img in
