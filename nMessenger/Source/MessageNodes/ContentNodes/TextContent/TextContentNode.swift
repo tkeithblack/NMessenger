@@ -178,7 +178,7 @@ open class TextContentNode: ContentNode,ASTextNodeDelegate {
      Implementing shouldHighlightLinkAttribute - returning true for both link and phone numbers
      */
     
-    public func textNode(_ textNode: ASTextNode, shouldHighlightLinkAttribute attribute: String, value: Any, at point: CGPoint) -> Bool {
+    public func textNode(_ textNode: ASTextNode, shouldHighlightLinkAttribute attribute: String?, value: Any?, at point: CGPoint) -> Bool {
         if attribute == "LinkAttribute"
         {
             return true
@@ -208,7 +208,7 @@ open class TextContentNode: ContentNode,ASTextNodeDelegate {
      */
 
     //open func textNode(_ textNode: ASTextNode, tappedLinkAttribute attribute: String, value: AnyObject, at point: CGPoint, textRange: NSRange) {
-    public func textNode(_ textNode: ASTextNode, tappedLinkAttribute attribute: String, value: Any, at point: CGPoint, textRange: NSRange) {
+    public func textNode(_ textNode: ASTextNode, tappedLinkAttribute attribute: String?, value: Any?, at point: CGPoint, textRange: NSRange) {
         if attribute == "LinkAttribute"
         {
             if !self.lockKey
@@ -241,7 +241,7 @@ open class TextContentNode: ContentNode,ASTextNodeDelegate {
      Implementing shouldLongPressLinkAttribute - returning true for both link and phone numbers
      */
     //open func textNode(_ textNode: ASTextNode, shouldLongPressLinkAttribute attribute: String, value: AnyObject, at point: CGPoint) -> Bool {
-    public func textNode(_ textNode: ASTextNode, shouldLongPressLinkAttribute attribute: String, value: Any, at point: CGPoint) -> Bool {
+    public func textNode(_ textNode: ASTextNode, shouldLongPressLinkAttribute attribute: String?, value: Any?, at point: CGPoint) -> Bool {
         if attribute == "LinkAttribute"
         {
             return true
@@ -257,7 +257,7 @@ open class TextContentNode: ContentNode,ASTextNodeDelegate {
      Implementing longPressedLinkAttribute - handles long tap event on links and phone numbers
      */
     //open func textNode(_ textNode: ASTextNode, longPressedLinkAttribute attribute: String, value: AnyObject, at point: CGPoint, textRange: NSRange) {
-    public func textNode(_ textNode: ASTextNode, longPressedLinkAttribute attribute: String, value: Any, at point: CGPoint, textRange: NSRange) {
+    public func textNode(_ textNode: ASTextNode, longPressedLinkAttribute attribute: String?, value: Any?, at point: CGPoint, textRange: NSRange) {
         if attribute == "LinkAttribute"
         {
             self.lockKey = true
