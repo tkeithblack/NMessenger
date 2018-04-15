@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NMessengerBarView" customModule="nMessenger" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NMessengerBarView" customModule="NMessenger" customModuleProvider="target">
             <connections>
                 <outlet property="InputBarView" destination="iN0-l3-epB" id="cHc-9u-IsO"/>
+                <outlet property="plusButton" destination="ZY8-eq-qAl" id="Hrl-UF-pKI"/>
                 <outlet property="sendButton" destination="6ZI-Ed-TdT" id="nVB-Vj-6Uw"/>
                 <outlet property="textInputAreaView" destination="Sm0-IA-kLJ" id="B1P-uO-jF0"/>
                 <outlet property="textInputAreaViewHeight" destination="yKk-PO-qMv" id="eU8-rF-jyc"/>
@@ -34,7 +39,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="6ZI-Ed-TdT" secondAttribute="bottom" id="Bo1-D1-tGj"/>
                                 <constraint firstAttribute="trailing" secondItem="6ZI-Ed-TdT" secondAttribute="trailing" id="RnZ-Kz-Fy2"/>
@@ -46,37 +51,37 @@
                             <rect key="frame" x="5" y="5" width="37" height="33"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY8-eq-qAl">
-                                    <rect key="frame" x="8" y="6" width="21" height="22"/>
+                                    <rect key="frame" x="4" y="6" width="29" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="5jc-Cu-7Kh"/>
-                                        <constraint firstAttribute="width" constant="21" id="8IW-Fa-9za"/>
+                                        <constraint firstAttribute="width" constant="29" id="8IW-Fa-9za"/>
                                     </constraints>
                                     <connections>
                                         <action selector="plusClicked:" destination="-1" eventType="touchUpInside" id="xV0-C3-1Oj"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ZY8-eq-qAl" secondAttribute="trailing" constant="8" id="0vc-FL-Ycc"/>
+                                <constraint firstAttribute="trailing" secondItem="ZY8-eq-qAl" secondAttribute="trailing" constant="4" id="0vc-FL-Ycc"/>
                                 <constraint firstAttribute="height" constant="33" id="JN8-0Y-nBy"/>
-                                <constraint firstItem="ZY8-eq-qAl" firstAttribute="leading" secondItem="Pa9-7P-RgB" secondAttribute="leading" constant="8" id="nZd-vt-1hR"/>
+                                <constraint firstItem="ZY8-eq-qAl" firstAttribute="leading" secondItem="Pa9-7P-RgB" secondAttribute="leading" constant="4" id="nZd-vt-1hR"/>
                                 <constraint firstAttribute="width" constant="37" id="tUT-U0-5Em"/>
                                 <constraint firstAttribute="bottom" secondItem="ZY8-eq-qAl" secondAttribute="bottom" constant="5" id="zxL-q8-5zZ"/>
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="NMessenger" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YfN-Lj-gpH">
                             <rect key="frame" x="42" y="5" width="497" height="33"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="vxI-oq-CGe"/>
                             </constraints>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Pa9-7P-RgB" firstAttribute="leading" secondItem="Sm0-IA-kLJ" secondAttribute="leading" constant="5" id="7jj-nl-Iq5"/>
                         <constraint firstItem="cHJ-9A-RDO" firstAttribute="top" secondItem="Sm0-IA-kLJ" secondAttribute="top" constant="5" id="F2T-pe-fZn"/>
@@ -94,7 +99,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Sm0-IA-kLJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Bin-0I-wWp"/>
                 <constraint firstItem="Sm0-IA-kLJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eBB-qg-6cp"/>

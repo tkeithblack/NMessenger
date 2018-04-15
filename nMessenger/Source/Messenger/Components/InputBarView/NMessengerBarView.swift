@@ -30,7 +30,9 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate {
     @IBOutlet open weak var textInputAreaViewHeight: NSLayoutConstraint!
     //@IBOutlets NSLayoutConstraint input view height
     @IBOutlet open weak var textInputViewHeight: NSLayoutConstraint!
-    
+    //@IBOutlet for plus button
+    @IBOutlet open weak var plusButton: UIButton!
+
     //MARK: Public Parameters
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows:CGFloat = 3
