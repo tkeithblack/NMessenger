@@ -62,7 +62,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
      */
     public init() {
         super.init(nibName: nil, bundle: nil)
-        self.addObservers()
+//        self.addObservers()
     }
     // MARK: Initialisers
     
@@ -74,7 +74,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
      */
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.addObservers()
+//        self.addObservers()
     }
     /**
      Initialiser from xib
@@ -82,7 +82,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
      */
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addObservers()
+//        self.addObservers()
     }
     
     /**
@@ -119,6 +119,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
         loadMessengerView()
         loadInputView()
         setUpConstraintsForViews()
+        self.addObservers()
         //swipe down
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(NMessengerViewController.respondToSwipeGesture(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
